@@ -16,3 +16,16 @@ export function findTextNode(el, children = [], index = 0) {
 
   return findTextNode(el.childNodes[index], nextChildren, index + 1);
 }
+
+export function isChildOf(el, to) {
+  if (el === to) {
+    return true;
+  }
+
+  if (el.parentNode) {
+    return isChildOf(el.parentNode, to);
+  }
+
+  return false;
+}
+

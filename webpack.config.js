@@ -115,7 +115,7 @@ var options = {
       cleanStaleWebpackAssets: true,
     }),
     // expose and write the allowed env vars on the compiled bundle
-    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'AWS_IDENTITY_POOL_ID']),
     new CopyWebpackPlugin({
       patterns: [
         {

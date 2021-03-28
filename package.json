@@ -13,6 +13,10 @@
     "prettier": "prettier --write '**/*.{js,jsx,css,html}'"
   },
   "dependencies": {
+    "@aws-sdk/client-cognito-identity": "^3.10.0",
+    "@aws-sdk/client-polly": "^3.10.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.10.0",
+    "@aws-sdk/polly-request-presigner": "^3.10.0",
     "@hot-loader/react-dom": "^17.0.1",
     "@types/chrome": "0.0.132",
     "@types/react": "^17.0.2",
