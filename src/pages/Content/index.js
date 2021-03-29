@@ -38,7 +38,9 @@ async function mousemove(event) {
   popup.setCharacter(character);
 }
 
+let running = false;
 async function init() {
+  running = true;
   hanzi.start();
 
   const voice = _voice.create();
@@ -55,13 +57,20 @@ function destroy() {
 }
 
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === 'enable') {
-    init();
-    return true;
-  } else if (message.type === 'disable') {
-    destroy();
-    return true;
+  switch (message.type) {
+    case 'enable':
+      running || init();
+      return true;
+    case 'disable':
+      destroy();
+      return true;
+    case 'enable:voice':
+      _voice.enabled = true;
+      return true;
+    case 'disable:voice':
+      _voice.enabled = false;
+      return true;
+    default:
+      return false;
   }
-
-  return false;
 });

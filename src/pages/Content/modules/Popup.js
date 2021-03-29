@@ -1,5 +1,6 @@
 import hanzi from 'hanzi';
 import HanziWriter from 'hanzi-writer';
+import pinyinize from 'pinyinize';
 import { timeout } from './timeout';
 
 export class Popup {
@@ -56,7 +57,8 @@ export class Popup {
           <div><span>Definition:</span> ${definition.definition}</div>
           <div><span>Simplified:</span> ${definition.simplified}</div>
           <div><span>Traditional:</span> ${definition.traditional}</div>
-          <div><span>Pinyin:</span> ${definition.pinyin}</div>
+          <div><span>Pinyin:</span> ${pinyinize(definition.pinyin)}</div>
+          <div><span>Pinyin (alt):</span> ${definition.pinyin}</div>
           ${index < definitions.length - 1 ? '<hr>' : ''}
         `
           )
@@ -71,6 +73,7 @@ export class Popup {
       width: 100,
       height: 100,
       padding: 5,
+      strokeColor: '#45AD45',
     }).loopCharacterAnimation();
 
     await this.voice.speak(character);
